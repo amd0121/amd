@@ -23,13 +23,13 @@ https://bc4livecdn1001.shop/703/tracks-v1a1/mono.m3u8
 https://bc4livecdn1001.shop/704/tracks-v1a1/mono.m3u8
 #EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel",Tabi Canlı 
 https://bc4livecdn1001.shop/tabii/tracks-v1a1/mono.m3u8
-EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel",Tabi Canlı 2
+#EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel",Tabi Canlı 2
 https://bc4livecdn1001.shop/tabii2/tracks-v1a1/mono.m3u8
-EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel",Tabi Canlı 3
+#EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel",Tabi Canlı 3
 https://bc4livecdn1001.shop/tabii3/tracks-v1a1/mono.m3u8
-EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel",Tabi Canlı 4
+#EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel",Tabi Canlı 4
 https://bc4livecdn1001.shop/tabii4/tracks-v1a1/mono.m3u8
-EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel",Tabi Canlı 5
+#EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel",Tabi Canlı 5
 https://bc4livecdn1001.shop/tabii5/tracks-v1a1/mono.m3u8
-EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel",Tabi Canlı 6
+#EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel",Tabi Canlı 6
 https://bc4livecdn1001.shop/tabii6/tracks-v1a1/mono.m3u8
