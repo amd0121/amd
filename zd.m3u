@@ -1,3 +1,39 @@
 #EXTM3U
 #EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel", beIN Sports 1
 https://bc4livecdn1001.shop/601/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel", beIN Sports 2
+https://bc4livecdn1001.shop/602/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel", beIN Sports 3
+https://bc4livecdn1001.shop/603/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel", beIN Sports 4
+https://bc4livecdn1001.shop/604/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel", beIN Sports 5
+https://bc4livecdn1001.shop/605/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel", beIN Max 1
+https://bc4livecdn1001.shop/801/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel", beIN Max 2
+https://bc4livecdn1001.shop/802/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel", Tivibu
+https://bc4livecdn1001.shop/701/tracks-v1a1/mono.m3u8
+/mono.m3u8
+#EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel", Tivibu 2
+https://bc4livecdn1001.shop/702/tracks-v1a1/mono.m3u8
+/mono.m3u8
+#EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel", Tivibu 3
+https://bc4livecdn1001.shop/703/tracks-v1a1/mono.m3u8
+/mono.m3u8
+#EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel", Tivibu 4
+https://bc4livecdn1001.shop/704/tracks-v1a1/mono.m3u8
+/mono.m3u8
+#EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel", Tabi Canlı 
+https://bc4livecdn1001.shop/tabii/tracks-v1a1/mono.m3u8
+EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel", Tabi Canlı 2
+https://bc4livecdn1001.shop/tabii2/tracks-v1a1/mono.m3u8
+EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel", Tabi Canlı 3
+https://bc4livecdn1001.shop/tabii3/tracks-v1a1/mono.m3u8
+EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel", Tabi Canlı 4
+https://bc4livecdn1001.shop/tabii4/tracks-v1a1/mono.m3u8
+EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel", Tabi Canlı 5
+https://bc4livecdn1001.shop/tabii5/tracks-v1a1/mono.m3u8
+EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel", Tabi Canlı 6
+https://bc4livecdn1001.shop/tabii6/tracks-v1a1/mono.m3u8
