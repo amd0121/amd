@@ -1,21 +1,5 @@
 #EXTM3U
-#EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel", beIN Sports 1 "bein-1"
-https://bc4livecdn1001.shop/601/tracks-v1a1/mono.m3u8
-#EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel", beIN Sports 2 "bein-2"
-https://bc4livecdn1001.shop/602/tracks-v1a1/mono.m3u8
-#EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel", beIN Sports 3 "bein-3"
-https://bc4livecdn1001.shop/603/tracks-v1a1/mono.m3u8
-#EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel", beIN Sports 4 "bein-4"
-https://bc4livecdn1001.shop/604/tracks-v1a1/mono.m3u8
-#EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel", beIN Sports 5 "bein-5"
-https://bc4livecdn1001.shop/605/tracks-v1a1/mono.m3u8
-#EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel", beIN Sports Haber "haber"
-https://bc4livecdn1001.shop/beinsportshaber/tracks-v1a1/mono.m3u8
-#EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel", beIN Max 1 "max-1"
-https://bc4livecdn1001.shop/801/tracks-v1a1/mono.m3u8
-#EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel", beIN Max 2 "max-2"
-https://bc4livecdn1001.shop/802/tracks-v1a1/mono.m3u8
-#EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel", Tivibu "tivibu"
-https://bc4livecdn1001.shop/701/tracks-v1a1/mono.m3u8
-#EXTINF:-1 tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="Atom-Panel", Tabii Canlı "tabii"
-https://bc4livecdn1001.shop/tabii/tracks-v1a1/mono.m3u8
+#EXTINF:-1,Bein Sport 1 [vip]
+https://viptine.site/2/vavoo.php?hls=38404756531618c87fcc66.m3u8
+#EXTINF:-1,Bein Sport 1 [ALTERNATİF]
+https://viptine.site/2/vavoo.php?hls=38404756531618c87fcc66.m3u8
