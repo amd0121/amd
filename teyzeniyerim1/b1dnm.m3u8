@@ -1,0 +1,6 @@
+#EXTM3U
+#EXTINF:-1 tvg-id="" tvg-name="Zayıf İnternet Yayını",Optimize Edilmiş Yayın (1080p)
+#EXTVLCOPT:network-caching=1000
+#EXTVLCOPT:http-reconnect=true
+#EXTVLCOPT:file-caching=1000
+https://zeus324232.cfd/b1local/index.txt
