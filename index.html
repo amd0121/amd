@@ -1,92 +1,206 @@
-<script>
-    // Kanal listesinin JSON adresi (kendi dosyanın linkini yaz)
-    const JSON_URL = 'https://gist.githubusercontent.com/zdlone/b083d6b12851d1f6bbe877a743d27db2/raw/spor.json';
-
-    const video = document.getElementById('video');
-    const listEl = document.getElementById('list');
-    const statusEl = document.getElementById('status');
-    let hls = null;
-
-    async function loadChannels() {
-        const res = await fetch(JSON_URL);
-        if (!res.ok) throw new Error('Liste alınamadı (HTTP ' + res.status + ')');
-
-        const data = await res.json();
-        if (!Array.isArray(data)) throw new Error('JSON bir dizi (array) olmalı');
-
-        return data
-            .filter(c => c && c.src)
-            .map((c, i) => ({
-                name: c.n || `Kanal ${i + 1}`,
-                url: c.src,
-                logo: c.l || ''
-            }));
-    }
-
-    function render(channels) {
-        listEl.innerHTML = '';
-
-        if (channels.length === 0) {
-            listEl.innerHTML = '<p class="msg">Kanal bulunamadı.</p>';
-            return;
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMD TV</title>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #0b0c10;
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
         }
 
-        channels.forEach((ch, i) => {
-            const item = document.createElement('div');
-            item.className = 'item';
+        /* Üst Header / Menü Alanı */
+        header {
+            background-color: #12141c;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #1f222e;
+        }
+        .menu-icon {
+            font-size: 20px;
+            margin-right: 15px;
+            cursor: pointer;
+            color: #ffcc00;
+        }
+        .brand {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffcc00;
+            letter-spacing: 0.5px;
+        }
 
-            if (ch.logo) {
-                const img = document.createElement('img');
-                img.src = ch.logo;
-                img.alt = '';
-                item.appendChild(img);
+        /* Ana Ekran Düzeni (Sol Liste, Sağ Oynatıcı) */
+        .main-container {
+            display: flex;
+            flex: 1;
+            height: calc(100vh - 55px);
+            overflow: hidden;
+        }
+
+        /* Kanal Listesi (Sol Panel) */
+        .sidebar {
+            width: 380px;
+            background-color: #12141c;
+            border-right: 1px solid #1f222e;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .channel-item {
+            padding: 16px 20px;
+            font-size: 15px;
+            font-weight: 500;
+            color: #b0b3bc;
+            cursor: pointer;
+            border-bottom: 1px solid #191c27;
+            transition: background 0.2s, color 0.2s;
+            display: flex;
+            align-items: center;
+        }
+        .channel-item:hover {
+            background-color: #181b26;
+            color: #fff;
+        }
+        .channel-item.active {
+            color: #ffcc00;
+            font-weight: bold;
+            background-color: #1a1d28;
+        }
+
+        /* Video Oynatıcı Alanı (Sağ Panel) */
+        .player-container {
+            flex: 1;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        video {
+            width: 100%;
+            height: 100%;
+            max-height: 100vh;
+            object-fit: contain;
+        }
+
+        /* Mobil Uyum */
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                height: 50vh;
+            }
+            .player-container {
+                height: 50vh;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="menu-icon">&#9776;</div>
+        <div class="brand">AMD TV</div>
+    </header>
+
+    <div class="main-container">
+        <!-- Sol Kanal Listesi -->
+        <div class="sidebar" id="channelList">
+            <div style="padding: 20px; text-align: center; color: #777;">Yükleniyor...</div>
+        </div>
+
+        <!-- Sağ Video Oynatıcı -->
+        <div class="player-container">
+            <video id="video" controls autoplay></video>
+        </div>
+    </div>
+
+    <script>
+        // Doğrudan senin Gist kanal listen buraya tanımlandı:
+        const JSON_URL = 'https://gist.githubusercontent.com/zdlone/b083d6b12851d1f6bbe877a743d27db2/raw/spor.json';
+        const CLOUDFLARE_WORKER_URL = ''; // Gerekirse buraya worker adresini yazabilirsin
+
+        const video = document.getElementById('video');
+        let hls;
+
+        async function loadChannels() {
+            try {
+                const response = await fetch(JSON_URL);
+                const channels = await response.json();
+                renderChannels(channels);
+            } catch (error) {
+                document.getElementById('channelList').innerHTML = '<p style="padding: 20px; color: #ff4444; text-align: center;">Kanallar yüklenemedi!</p>';
+            }
+        }
+
+        function renderChannels(channels) {
+            const listContainer = document.getElementById('channelList');
+            listContainer.innerHTML = '';
+
+            if (!Array.isArray(channels) || channels.length === 0) {
+                listContainer.innerHTML = '<p style="padding: 20px; text-align: center;">Kanal bulunamadı.</p>';
+                return;
             }
 
-            const label = document.createElement('span');
-            label.textContent = ch.name;
-            item.appendChild(label);
+            channels.forEach((channel, index) => {
+                const item = document.createElement('div');
+                item.className = 'channel-item';
+                if (index === 0) item.classList.add('active'); // İlk kanal aktif başlasın
+                
+                item.textContent = channel.name || `Kanal ${index + 1}`;
 
-            item.addEventListener('click', () => selectChannel(item, ch.url));
-            listEl.appendChild(item);
+                item.addEventListener('click', () => {
+                    document.querySelectorAll('.channel-item').forEach(el => el.classList.remove('active'));
+                    item.classList.add('active');
+                    playStream(channel.url);
+                });
 
-            if (i === 0) selectChannel(item, ch.url);
-        });
-    }
+                listContainer.appendChild(item);
 
-    function selectChannel(item, url) {
-        document.querySelectorAll('.item').forEach(el => el.classList.remove('active'));
-        item.classList.add('active');
-        play(url);
-    }
-
-    function play(url) {
-        statusEl.textContent = '';
-
-        if (hls) {
-            hls.destroy();
-            hls = null;
-        }
-
-        if (window.Hls && Hls.isSupported()) {
-            hls = new Hls();
-            hls.loadSource(url);
-            hls.attachMedia(video);
-            hls.on(Hls.Events.MANIFEST_PARSED, () => video.play().catch(() => {}));
-            hls.on(Hls.Events.ERROR, (_, data) => {
-                if (data.fatal) statusEl.textContent = 'Yayın açılamadı (' + data.type + ')';
+                // Sayfa ilk açıldığında ilk kanalı otomatik oynat
+                if (index === 0) {
+                    playStream(channel.url);
+                }
             });
-        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-            video.src = url;
-            video.play().catch(() => {});
-        } else {
-            statusEl.textContent = 'Bu tarayıcı HLS yayınlarını desteklemiyor.';
         }
-    }
 
-    loadChannels()
-        .then(render)
-        .catch(e => {
-            console.error(e);
-            listEl.innerHTML = '<p class="msg error">Kanallar yüklenemedi!<br><small>' + e.message + '</small></p>';
-        });
-</script>
+        function playStream(rawUrl) {
+            const finalUrl = CLOUDFLARE_WORKER_URL ? (CLOUDFLARE_WORKER_URL + encodeURIComponent(rawUrl)) : rawUrl;
+
+            if (Hls.isSupported()) {
+                if (hls) {
+                    hls.destroy();
+                }
+                hls = new Hls();
+                hls.loadSource(finalUrl);
+                hls.attachMedia(video);
+                hls.on(Hls.Events.MANIFEST_PARSED, function() {
+                    video.play();
+                });
+            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                video.src = finalUrl;
+                video.addEventListener('loadedmetadata', function() {
+                    video.play();
+                });
+            }
+        }
+
+        loadChannels();
+    </script>
+</body>
+</html>
