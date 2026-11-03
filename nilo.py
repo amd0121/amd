@@ -9,14 +9,14 @@ WORKERS = 30
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0",
-    "Referer": "https://www.ginikoturkish.com/"
+    "Referer": "https://sg.kralolaf73.workers.dev/"
 }
 
 ALLOWED_DOMAIN = "trn03.tulix.tv"
 
 def check_channel(ch_id):
 
-    url = f"https://ginikoturkish.com/xml/secure/plist.php?ch={ch_id}"
+    url = f"https://sg.kralolaf73.workers.dev/xml/secure/plist.php?ch={ch_id}"
 
     try:
         r = requests.get(url, headers=HEADERS, timeout=8)
